@@ -1,0 +1,204 @@
+/* Custom CoreGen Styles */
+
+:root {
+  --background: #0a0e27;
+  --foreground: #f0f4ff;
+  --primary: #0066ff;
+  --secondary: #00d4ff;
+  --accent: #00ff88;
+  --card: #1a1f3a;
+  --border: #2d3558;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #0066ff, #00d4ff, #00ff88);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-padding {
+  padding: 5rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 8rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding: 8rem 4rem;
+  }
+}
+
+.glass {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  border-radius: 0.125rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.glass-hover {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  border-radius: 0.125rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  transition: all 0.3s ease;
+}
+
+.glass-hover:hover {
+  transform: translateY(-0.5rem);
+  border-color: #00ff88;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.3), 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}
+
+.section-grid-creamy {
+  background-color: #fdfbf7;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 25px 25px;
+  position: relative;
+}
+
+.section-grid-light-green {
+  background-color: #f0fff4;
+  background-image:
+    linear-gradient(rgba(0, 255, 136, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* Form Elements */
+input,
+textarea,
+select,
+option {
+  color: #000000 !important;
+  transition: all 0.3s ease;
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+  border-color: #0066ff !important;
+  box-shadow: 0 0 8px rgba(0, 102, 255, 0.15);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #00ff88 !important;
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.25);
+  outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Contact Card Hover */
+.contact-info-card {
+  transition: all 0.3s ease;
+}
+
+.contact-info-card:hover {
+  border-color: #0066ff !important;
+  box-shadow: 0 4px 15px rgba(0, 102, 255, 0.1);
+  transform: translateX(5px);
+}
+
+@keyframes float-subtle {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-float-subtle {
+  animation: float-subtle 3s ease-in-out infinite;
+}
+
+/* Animations from Tailwind config but used in pure CSS */
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+@keyframes progress {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.preloader-fade {
+  opacity: 0;
+  pointer-events: none;
+}
