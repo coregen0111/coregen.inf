@@ -376,7 +376,7 @@ async function handleFormSubmit(e, type) {
     }
 
     try {
-        await fetch('https://script.google.com/macros/s/AKfycbwITvVMiUwAmrjDh4M9SpmxINzSKeWnzkMH5l_Eo-zUnpdbC1DJspEtTMZ53D2F8uIy/exec', {
+        await fetch('https://script.google.com/macros/s/AKfycbyNUPIE7nNqkq5fMPHHla2QEOO_-3lkyiwljff-yzM6Wh6zk0cC9jFnNHwvpTlsMmXO/exec', {
             method: 'POST',
             mode: 'no-cors',
             body: JSON.stringify(data)
