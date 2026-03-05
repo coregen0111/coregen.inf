@@ -621,9 +621,10 @@
                     <div class="bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-black/5">
                         <h3 class="text-2xl font-bold text-slate-900 mb-8">Send us a Message</h3>
                         <form id="contact-form" class="space-y-5">
+                            <input type="hidden" name="formType" value="Get Quotation">
                             <div class="space-y-2">
                                 <label class="text-sm font-bold text-slate-900">Full Name</label>
-                                <input type="text" name="name" placeholder="Your name" required
+                                <input type="text" name="fullName" placeholder="Your name" required
                                     class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all">
                             </div>
                             <div class="space-y-2">
@@ -638,7 +639,7 @@
                             </div>
                             <div class="space-y-2">
                                 <label class="text-sm font-bold text-slate-900">Service Required</label>
-                                <select name="service" required
+                                <select name="position" required
                                     class="w-full px-4 py-3 border border-slate-200 rounded-xl bg-white outline-none focus:border-primary transition-all">
                                     <option value="" disabled selected>Select a service</option>
                                     <option value="web">Web Development</option>
@@ -655,7 +656,7 @@
                             </div>
                             <div class="space-y-2">
                                 <label class="text-sm font-bold text-slate-900">Message</label>
-                                <textarea name="message" placeholder="Tell us about your project..." rows="4" required
+                                <textarea name="coverLetter" placeholder="Tell us about your project..." rows="4" required
                                     class="w-full px-4 py-3 border border-slate-200 rounded-xl outline-none focus:border-primary transition-all resize-none"></textarea>
                             </div>
                             <button type="submit"
