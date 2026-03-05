@@ -238,14 +238,24 @@ function selectCareer(type) {
                         <option value="datascience">Data Science & Analytics Intern</option>
                         <option value="ai">Artificial Intelligence (AI) Intern</option>
                         <option value="frontend">Front-End Developer Intern</option>
-                        <option value="analytics">Business Analytics</option>
-                        <option value="marketing">Digital Marketing & SEO</option>
+                        <option value="backend">BackEnd Developer Intern</option>
+                        <option value="java">Java Developer Intern</option>
+                        <option value="app">App Development Intern</option>
                     </select>
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-slate-800 mb-2">Field of Study</label>
+                    <select name="field_study_experience" required class="w-full px-4 py-3 border border-black/10 rounded-lg bg-white text-slate-800 mb-4">
+                        <option value="" disabled selected>Select your degree</option>
+                        <option value="MCA">MCA</option>
+                        <option value="BCA">BCA</option>
+                        <option value="MTech">MTech</option>
+                        <option value="BTech">BTech</option>
+                        <option value="other">Other</option>
+                    </select>
+                    
                     <label class="block text-sm font-semibold text-slate-800 mb-2">Cover Letter</label>
-                    <textarea name="coverLetter" placeholder="Tell us about yourself..." rows="4" required class="w-full px-4 py-3 border border-black/10 rounded-lg resize-none"></textarea>
+                    <textarea name="coverLetter" placeholder="Tell us about yourself..." rows="4" required class="w-full px-4 py-3 border border-black/10 rounded-lg resize-none text-slate-800"></textarea>
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-slate-800 mb-2">Upload Resume/CV</label>
@@ -284,7 +294,7 @@ function selectCareer(type) {
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-slate-800 mb-2">Years of Experience</label>
-                    <input type="text" name="field_study_experience" placeholder="e.g., 5+ years" required class="w-full px-4 py-3 border border-black/10 rounded-lg">
+                    <input type="text" name="field_study_experience" placeholder="e.g., 5+ years" required class="w-full px-4 py-3 border border-black/10 rounded-lg text-slate-800">
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-slate-800 mb-2">Cover Letter</label>
@@ -342,48 +352,22 @@ async function handleFormSubmit(e, type) {
     btn.disabled = true;
 
     const formData = new FormData(e.target);
-    const data = {
-        formType: type,
-        timestamp: new Date().toLocaleString()
-    };
-
-    // Convert form fields to object
+    const data = {};
     formData.forEach((value, key) => {
         if (key !== 'resume') {
             data[key] = value;
         }
     });
 
-    // Handle File Upload if exists
-    const fileInput = e.target.querySelector('input[type="file"]');
-    if (fileInput && fileInput.files[0]) {
-        const file = fileInput.files[0];
-        try {
-            const resumeData = await new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = () => resolve({
-                    base64: (reader.result).split(',')[1],
-                    name: file.name,
-                    type: file.type
-                });
-                reader.onerror = reject;
-                reader.readAsDataURL(file);
-            });
-            data.resume = resumeData;
-        } catch (err) {
-            console.error('File reading error:', err);
-        }
-    }
-
     try {
-        await fetch('https://script.google.com/macros/s/AKfycbyNUPIE7nNqkq5fMPHHla2QEOO_-3lkyiwljff-yzM6Wh6zk0cC9jFnNHwvpTlsMmXO/exec', {
+        await fetch('https://script.google.com/macros/s/AKfycbxkJ5PkT2tJT33xDdbfk3_HUIf6mUmp2nl2RN5NvZ5S8O_Vw8FzgiJJ_-5OQIO8_A_C/exec', {
             method: 'POST',
             mode: 'no-cors',
             body: JSON.stringify(data)
         });
         alert('Thank you! Your submission has been received.');
         e.target.reset();
-        if (type.includes('Application')) {
+        if (type.toLowerCase().includes('application')) {
             resetCareerForms();
         }
     } catch (err) {
@@ -404,6 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
 
+    // Wired up static forms (Contact)
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => handleFormSubmit(e, 'Contact Form'));
@@ -420,6 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
             backToTop.classList.remove('flex');
         }
     });
+
     // Remove Preloader
     const preloader = document.getElementById('preloader');
     if (preloader) {
